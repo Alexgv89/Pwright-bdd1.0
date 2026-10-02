@@ -1,0 +1,25 @@
+
+# Playwright
+node_modules/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+.features-gen/
+# Allure
+/allure-results/
+/allure-report/
+/allure-history/
+.allure/
+
+# OS files
+.DS_Store
+
+# Environment Variables
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+pnpm-debug.log*
