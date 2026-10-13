@@ -167,28 +167,25 @@ importers:
   .:
     devDependencies:
       '@playwright/test':
-        specifier: ^1.63.0
+        specifier: 1.63.0
         version: 1.63.0
-      '@types/dotenv':
-        specifier: ^8.2.3
-        version: 8.2.3
       '@types/node':
-        specifier: ^26.6.2
+        specifier: 26.6.2
         version: 26.6.2
       allure:
-        specifier: ^3.19.1
+        specifier: 3.19.1
         version: 3.19.1(debug@4.4.3)(preact@11.0.0)
       allure-playwright:
-        specifier: ^3.12.2
+        specifier: 3.12.2
         version: 3.12.2(@playwright/test@1.63.0)
       dotenv:
-        specifier: ^16.4.7
-        version: 16.6.1
+        specifier: 16.4.7
+        version: 16.4.7
       playwright-bdd:
-        specifier: ^9.2.1
+        specifier: 9.2.1
         version: 9.2.1(@playwright/test@1.63.0)
       rimraf:
-        specifier: ^6.1.3
+        specifier: 6.1.3
         version: 6.1.3
 
 packages:
@@ -337,10 +334,6 @@ packages:
   '@teppeis/multimaps@3.0.0':
     resolution: {integrity: sha512-ID7fosbc50TbT0MK0EG12O+gAP3W3Aa/Pz4DaTtQtEvlc9Odaqi0de+xuZ7Li2GtK4HzEX7IuRWS/JmZLksR3Q==}
     engines: {node: '>=14'}
-
-  '@types/dotenv@8.2.3':
-    resolution: {integrity: sha512-g2FXjlDX/cYuc5CiQvyU/6kkbP1JtmGzh0obW50zD7OKeILVL0NSpPWLXVfqoAGQjom2/SLLx9zHq0KXvD6mbw==}
-    deprecated: This is a stub types definition. dotenv provides its own type definitions, so you do not need this installed.
 
   '@types/node@26.6.2':
     resolution: {integrity: sha512-X1P21scMv4zGKLYqjdGjaKa7COa0RKVYYZZN/NfvLQ1JegxFhdhpZG/Lyn8AXx6CDUavKAd11v6BvfpkDByK8g==}
@@ -550,8 +543,8 @@ packages:
   dompurify@3.4.16:
     resolution: {integrity: sha512-sqo+pNp3qRhCIpbgRi1y8Tgk27Bo2Ry7w0dC1NBeNTdZChWjz9Xb/KOoZbRP/R6pQZ80Qw8YhXw13hWWBbMRnQ==}
 
-  dotenv@16.6.1:
-    resolution: {integrity: sha512-uBq4egWHTcTt33a72vpSG0z3HnPuIl6NqYcTrKEg2azoEyl2hpW0zqlxysq2pK9HlDIHyHyakeYaYnSAwd8bow==}
+  dotenv@16.4.7:
+    resolution: {integrity: sha512-47qPchRCykZC03FhkYAhrvwU4xDBFIj1QPqaarj6mdM/hgUzfPHcpkHJOn3mJAufFeeAxAzeGsr5X0M4k6fLZQ==}
     engines: {node: '>=12'}
 
   dunder-proto@1.0.1:
@@ -1333,10 +1326,6 @@ snapshots:
 
   '@teppeis/multimaps@3.0.0': {}
 
-  '@types/dotenv@8.2.3':
-    dependencies:
-      dotenv: 16.6.1
-
   '@types/node@26.6.2':
     dependencies:
       undici-types: 8.9.0
@@ -1549,7 +1538,7 @@ snapshots:
     optionalDependencies:
       '@types/trusted-types': 2.0.7
 
-  dotenv@16.6.1: {}
+  dotenv@16.4.7: {}
 
   dunder-proto@1.0.1:
     dependencies:
