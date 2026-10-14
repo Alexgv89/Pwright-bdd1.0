@@ -1,6 +1,5 @@
 import { createBdd } from 'playwright-bdd';
 import { WikiHomePage } from '../pages/wikiHome.Page';
-import { QualityPage } from '../pages/QualityPage';
 import { expect } from '@playwright/test';
 
 const { Given: Dado, When: Cuando, Then: Entonces } = createBdd();
@@ -33,9 +32,4 @@ Cuando('busca el término {string} en la barra de búsqueda', async ({page}, ter
 
 Entonces('el título de la página debe contener {string}', async ({page}, expectedTitle:string) => {
   await expect(page).toHaveTitle(new RegExp(expectedTitle.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
-});
-
-Entonces('el sistema debe fallar la prueba de calidad', async ({page}) => {
-  const qualityPage = new QualityPage(page);
-  await qualityPage.forceFailure();
 });
