@@ -65,7 +65,13 @@ pnpm test:firefox
 pnpm test:webkit
 ```
 
-**E. Ejecución Total (Todos los navegadores en paralelo):**
+**E. Ejecutar Pruebas de API (Backend / Keycloak):**
+
+```bash
+pnpm test:api
+```
+
+**F. Ejecución Total (Suite completa):**
 
 ```bash
 pnpm test

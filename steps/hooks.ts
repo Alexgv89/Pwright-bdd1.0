@@ -28,8 +28,5 @@ Before(async ({ $tags }, testInfo) => {
     await allure.parameter('Browser', browserName);
     // Asigna el navegador como Suite Principal para organizar el árbol del reporte
     await allure.parentSuite(browserName);
-  } else {
-    // Asigna Suite Principal para organizar los tests de backend en el reporte
-    await allure.parentSuite('API Services');
   }
 });

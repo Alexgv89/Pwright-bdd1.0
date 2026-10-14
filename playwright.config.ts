@@ -10,15 +10,23 @@ const testDir = defineBddConfig({
 });
 
 // Mapping of URLs by environment (Mirroring Java's config.properties)
-const URLS = {
-  dev: 'https://es.wikipedia.orgnn',
+const UI_URLS = {
+  dev: 'https://es.wikipedia.org',
   qa: 'https://es.wikipedia.org',
-  staging: 'https://es.wikipedia.org',
+  release: 'https://es.wikipedia.org',
   prod: 'https://es.wikipedia.org',
 };
 
-const currentEnv = process.env.ENV || 'qa';
-const baseUrl = URLS[currentEnv as keyof typeof URLS] || URLS.qa;
+const API_URLS = {
+  dev: 'http://localhost:8080',
+  qa: 'http://localhost:8080',
+  release: 'https://auth-release.example.com',
+  prod: 'https://auth.example.com',
+};
+
+const currentEnv = (process.env.ENV || 'qa').toLowerCase();
+const uiBaseUrl = process.env.BASE_URL || UI_URLS[currentEnv as keyof typeof UI_URLS] || UI_URLS.qa;
+const apiBaseUrl = process.env.KEYCLOAK_URL || API_URLS[currentEnv as keyof typeof API_URLS] || API_URLS.qa;
 
 export default defineConfig({
   testDir,
@@ -35,7 +43,8 @@ export default defineConfig({
         environmentInfo: {
           Project_Name: 'Wikipedia BDD Project',
           Environment: currentEnv.toUpperCase(),
-          Base_URL: baseUrl,
+          UI_Base_URL: uiBaseUrl,
+          API_Base_URL: apiBaseUrl,
           'S.O SYSTEM': os.type() === 'Darwin' ? `macOS (${os.arch()})` : `${os.type()} (${os.arch()})`,
           Node_Version: process.version,
           Framework: 'Playwright + playwright-bdd',
@@ -46,7 +55,7 @@ export default defineConfig({
     ],
   ],
   use: {
-    baseURL: baseUrl, // Playwright uses this for page.goto('/')
+    baseURL: uiBaseUrl, // Fallback por defecto
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
@@ -54,24 +63,36 @@ export default defineConfig({
 
   projects: [
     {
+      name: 'api',
+      grep: /@api/,
+      use: {
+        baseURL: apiBaseUrl,
+      },
+    },
+    {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      grepInvert: /@api/,
+      use: { ...devices['Desktop Chrome'], baseURL: uiBaseUrl },
     },
     {
       name: 'firefox',
+      grepInvert: /@api/,
       use: {
         ...devices['Desktop Firefox'],
-       
+        baseURL: uiBaseUrl,
       },
     },
     {
       name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
+      grepInvert: /@api/,
+      use: { ...devices['Desktop Safari'], baseURL: uiBaseUrl },
     },
     {
       name: 'edge',
+      grepInvert: /@api/,
       use: {
         ...devices['Desktop Edge'],
+        baseURL: uiBaseUrl,
       },
     },
   ],
